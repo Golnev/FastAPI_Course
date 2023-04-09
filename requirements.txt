@@ -1,4 +1,6 @@
 fastapi==0.92.00
 uvicorn==0.20.0
-pydantic~=1.10.5
+pydantic==1.10.5
 sqlalchemy==2.0.6
+passlib==1.7.4
+bcrypt
