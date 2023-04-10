@@ -6,11 +6,11 @@ from blog.routers import blog, user
 
 tags_metadata = [
     {
-        'name': 'blogs',
+        'name': 'Blogs',
         'description': 'Operations with blogs'
     },
     {
-        'name': 'users',
+        'name': 'Users',
         'description': 'Operations with users'
     }
 ]
