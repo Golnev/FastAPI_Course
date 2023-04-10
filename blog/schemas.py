@@ -1,7 +1,7 @@
 from typing import List
 
 from fastapi import Query
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 
 class BlogBase(BaseModel):
@@ -28,10 +28,9 @@ class User(BaseModel):
         default=...,
         description='User Name'
     )
-    email: str = Query(
+    email: EmailStr = Query(
         default=...,
         description='User email',
-        min_length=7,
     )
     password: str
 

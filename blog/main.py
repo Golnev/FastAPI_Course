@@ -1,4 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 
 from blog import models
 from blog.database import engine
@@ -34,3 +36,10 @@ models.Base.metadata.create_all(bind=engine)
 
 app.include_router(router=blog.router)
 app.include_router(router=user.router)
+
+templates = Jinja2Templates(directory='templates')
+
+
+@app.get('', response_class=HTMLResponse, tags=['Main'])
+def root(request: Request):
+    return templates.TemplateResponse('about.html', {'request': request})
