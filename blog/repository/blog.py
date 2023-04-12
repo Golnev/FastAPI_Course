@@ -9,11 +9,12 @@ def get_all(db: Session, limit: int = 10):
     return blogs
 
 
-def create(request: schemas.Blog, db: Session):
+def create(request: schemas.Blog, db: Session, current_user: schemas.TokenData):
+    user = db.query(models.User).filter(models.User.email == current_user.email).first()
     new_blog = models.Blog(
         title=request.title,
         body=request.body,
-        user_id=1
+        user_id=user.id
     )
     db.add(new_blog)
     db.commit()

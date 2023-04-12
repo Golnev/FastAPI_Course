@@ -67,3 +67,21 @@ class ShowBlog(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class Login(BaseModel):
+    email: EmailStr = Query(
+        description='User email'
+    )
+    password: str = Query(
+        description='User password'
+    )
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    email: str | None = None
